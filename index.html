@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javix VPS - Premium VPS Hosting</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- AOS Animation -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- Particles.js -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<style>
+:root {
+  --primary: #00d4ff;
+  --secondary: #0066ff;
+  --bg-dark: #0d1117;
+  --bg-light: #f9f9f9;
+  --text-dark: #111827;
+  --text-light: #fff;
+  --card-bg: rgba(255,255,255,0.05);
+  --card-bg-light: rgba(0,0,0,0.03);
+  --shadow: rgba(0,212,255,0.2);
+}
+
+/* ===== Reset & Base ===== */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; scroll-behavior:smooth; }
+body { background: var(--bg-dark); color: var(--text-light); transition:0.5s; }
+a { text-decoration:none; color:inherit; }
+button { cursor:pointer; border:none; outline:none; }
+
+/* ===== Dark/Light Toggle ===== */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--primary);
+  color: #111;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  z-index: 2000;
+  transition:0.3s;
+}
+.theme-toggle:hover { transform: scale(1.05); }
+
+/* ===== Navbar ===== */
+nav {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:20px 50px;
+  position: fixed; width:100%;
+  background: rgba(13,17,23,0.85);
+  backdrop-filter: blur(8px);
+  z-index:1000;
+  transition:0.3s;
+}
+nav .logo { font-size:2rem; font-weight:700; color: var(--primary); letter-spacing:1px; }
+nav ul { display:flex; list-style:none; gap:30px; }
+nav ul li a { font-weight:500; position: relative; }
+nav ul li a::after { content:''; position:absolute; width:0; height:2px; bottom:-4px; left:0; background: var(--primary); transition:0.3s; }
+nav ul li a:hover::after { width:100%; }
+
+/* ===== Hero ===== */
+.hero {
+  position:relative; display:flex; flex-direction:column; justify-content:center; align-items:center;
+  text-align:center; height:100vh; padding:0 20px; overflow:hidden;
+}
+.hero h1 { font-size:3.5rem; color: var(--primary); margin-bottom:20px; }
+.hero p { font-size:1.3rem; color:#ccc; margin-bottom:30px; max-width:600px; }
+.hero .btn {
+  padding:16px 40px;
+  font-weight:600;
+  border-radius:12px;
+  background: linear-gradient(90deg,var(--primary),var(--secondary));
+  color:#111;
+  transition:0.5s;
+  box-shadow: 0 6px 20px var(--shadow);
+}
+.hero .btn:hover { transform:translateY(-3px); box-shadow:0 8px 30px var(--shadow); }
+
+/* ===== VPS Plans ===== */
+.plans {
+  max-width:1200px; margin:120px auto 60px;
+  display:grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  gap:30px; padding:0 20px;
+}
+.plan {
+  background: var(--card-bg);
+  backdrop-filter:blur(12px);
+  border-radius:15px;
+  padding:30px 20px;
+  text-align:center;
+  transition:0.3s;
+  border:1px solid var(--primary);
+}
+.plan:hover { transform:translateY(-10px); box-shadow:0 15px 30px var(--shadow); }
+.plan h3 { font-size:1.8rem; margin-bottom:15px; color: var(--primary); }
+.plan p { color:#ccc; margin:8px 0; }
+.plan .price { font-size:2rem; font-weight:700; margin:15px 0; color: var(--primary); }
+.plan button {
+  margin-top:10px;
+  padding:12px 28px;
+  font-weight:600;
+  border-radius:10px;
+  background: linear-gradient(90deg,var(--primary),var(--secondary));
+  color:#111;
+  transition:0.3s;
+}
+.plan button:hover { transform:translateY(-3px); opacity:0.9; }
+
+/* ===== Features ===== */
+.features { background: var(--bg-dark); padding:100px 20px; text-align:center; }
+.features h2 { font-size:2.8rem; color: var(--primary); margin-bottom:50px; }
+.feature-cards { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:30px; max-width:1200px; margin:auto; }
+.feature {
+  background: var(--card-bg);
+  padding:30px 20px;
+  border-radius:15px;
+  transition:0.3s;
+}
+.feature:hover { transform:scale(1.05); box-shadow:0 10px 25px var(--shadow); }
+.feature h3 { color: var(--primary); margin-bottom:10px; font-size:1.5rem; }
+.feature p { color:#ccc; font-size:1rem; }
+
+/* ===== Footer ===== */
+footer { background: rgba(17,24,39,0.95); text-align:center; padding:40px 20px; border-top:1px solid var(--primary); }
+footer p { color:#777; margin:5px 0; }
+footer a { color: var(--primary); transition:0.3s; }
+footer a:hover { text-decoration:underline; }
+
+/* ===== Floating Buy Now Button ===== */
+.floating-btn {
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  background: linear-gradient(90deg,var(--primary),var(--secondary));
+  color:#111;
+  padding:16px 28px;
+  font-weight:600;
+  border-radius:12px;
+  box-shadow:0 6px 20px var(--shadow);
+  z-index:1500;
+  transition:0.3s;
+  text-decoration:none;
+}
+.floating-btn:hover { transform:translateY(-3px); opacity:0.9; }
+
+/* ===== Responsive ===== */
+@media(max-width:768px){
+  nav { padding:15px 20px; }
+  .hero h1{ font-size:2.5rem; }
+  .hero p{ font-size:1rem; }
+  .plans { margin-top:80px; }
+}
+
+/* ===== Dark Mode ===== */
+body.light { background: var(--bg-light); color: var(--text-dark); }
+body.light nav { background: rgba(255,255,255,0.85); }
+body.light .plan, body.light .feature { background: var(--card-bg-light); border:1px solid var(--primary); }
+body.light footer { background: rgba(255,255,255,0.85); border-top:1px solid var(--primary); }
+
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" id="themeToggle">Light Mode</button>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">Javix VPS</div>
+  <ul>
+    <li><a href="#plans">Plans</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero" data-aos="fade-down">
+  <div id="particles-js"></div>
+  <h1>Javix VPS Hosting</h1>
+  <p>Fast, Secure & Reliable VPS Hosting for Developers & Businesses</p>
+  <a href="checkout.html" class="btn">Buy VPS Now</a>
+</section>
+
+<!-- VPS Plans -->
+<section class="plans" id="plans">
+  <div class="plan" data-aos="fade-up">
+    <h3>Basic VPS</h3>
+    <p>2 CPU Cores</p>
+    <p>4GB RAM</p>
+    <p>50GB SSD</p>
+    <div class="price">$5/month</div>
+    <a href="checkout.html?plan=basic&price=5"><button>Order Now</button></a>
+  </div>
+  <div class="plan" data-aos="fade-up" data-aos-delay="100">
+    <h3>Pro VPS</h3>
+    <p>4 CPU Cores</p>
+    <p>8GB RAM</p>
+    <p>100GB SSD</p>
+    <div class="price">$10/month</div>
+    <a href="checkout.html?plan=pro&price=10"><button>Order Now</button></a>
+  </div>
+  <div class="plan" data-aos="fade-up" data-aos-delay="200">
+    <h3>Enterprise VPS</h3>
+    <p>8 CPU Cores</p>
+    <p>16GB RAM</p>
+    <p>200GB SSD</p>
+    <div class="price">$20/month</div>
+    <a href="checkout.html?plan=enterprise&price=20"><button>Order Now</button></a>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features" id="features">
+  <h2 data-aos="fade-right">Why Choose Javix VPS?</h2>
+  <div class="feature-cards">
+    <div class="feature" data-aos="zoom-in"><h3>99.9% Uptime</h3><p>Reliable servers always online.</p></div>
+    <div class="feature" data-aos="zoom-in" data-aos-delay="100"><h3>SSD Storage</h3><p>Ultra-fast SSDs for blazing speed.</p></div>
+    <div class="feature" data-aos="zoom-in" data-aos-delay="200"><h3>24/7 Support</h3><p>Always ready to help.</p></div>
+    <div class="feature" data-aos="zoom-in" data-aos-delay="300"><h3>Secure & Private</h3><p>Privacy and security prioritized.</p></div>
+    <div class="feature" data-aos="zoom-in" data-aos-delay="400"><h3>DDoS Protection</h3><p>Advanced protection 24/7.</p></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+  <p>© 2026 Javix VPS. All rights reserved.</p>
+  <p style="margin-top:10px;">
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms & Conditions</a> |
+    <a href="shipping.html">Shipping Policy</a> |
+    <a href="refund.html">Cancellation & Refund</a> |
+    <a href="contact.html">Contact Us</a>
+  </p>
+</footer>
+
+<!-- Floating Buy Now -->
+<a href="checkout.html" class="floating-btn">Buy Now</a>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration:1000, once:true });
+
+// Dark/Light Toggle
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  themeToggle.textContent = document.body.classList.contains('light') ? 'Dark Mode' : 'Light Mode';
+});
+</script>
+
+<script>
+particlesJS("particles-js",{
+  "particles": {
+    "number":{"value":60},
+    "color":{"value":"#00d4ff"},
+    "shape":{"type":"circle"},
+    "opacity":{"value":0.5,"random":true},
+    "size":{"value":3,"random":true},
+    "line_linked":{"enable":true,"distance":150,"color":"#00d4ff","opacity":0.3,"width":1},
+    "move":{"enable":true,"speed":2}
+  },
+  "interactivity":{
+    "events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"}},
+    "modes":{"repulse":{"distance":100},"push":{"particles_nb":4}}
+  },
+  "retina_detect":true
+});
+</script>
+
+</body>
+</html>
