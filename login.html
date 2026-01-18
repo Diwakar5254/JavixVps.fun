@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javix VPS – Register</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#00d4ff;
+  --secondary:#0066ff;
+  --dark:#0b0f1a;
+  --card:#111827;
+  --text:#ffffff;
+  --muted:#9ca3af;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#020617,#0b0f1a);
+  color:var(--text);
+}
+.container{
+  background:var(--card);
+  width:100%;
+  max-width:440px;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 0 40px rgba(0,212,255,0.2);
+}
+.logo{
+  text-align:center;
+  font-size:2rem;
+  font-weight:700;
+  color:var(--primary);
+  margin-bottom:10px;
+}
+.subtitle{
+  text-align:center;
+  color:var(--muted);
+  margin-bottom:30px;
+}
+label{display:block;margin-bottom:6px;font-size:.9rem;color:var(--muted);} 
+input{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #1f2937;
+  background:#020617;
+  color:#fff;
+  margin-bottom:18px;
+}
+input:focus{outline:none;border-color:var(--primary);} 
+button{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  color:#000;
+  font-weight:600;
+  border:none;
+  margin-top:10px;
+}
+.switch{
+  margin-top:20px;
+  text-align:center;
+  font-size:.9rem;
+}
+.switch a{color:var(--primary);} 
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="logo">Javix VPS</div>
+  <div class="subtitle">Create your account</div>
+
+  <form onsubmit="register(event)">
+    <label>Full Name</label>
+    <input type="text" required>
+
+    <label>Email</label>
+    <input type="email" required>
+
+    <label>Password</label>
+    <input type="password" required>
+
+    <label>Confirm Password</label>
+    <input type="password" required>
+
+    <button type="submit">Create Account</button>
+  </form>
+
+  <div class="switch">
+    Already have an account? <a href="login.html">Login</a>
+  </div>
+</div>
+
+<script>
+function register(e){
+  e.preventDefault();
+  // DEMO REGISTER
+  localStorage.setItem("javix_logged_in","true");
+  window.location.href="dashboard.html";
+}
+</script>
+
+</body>
+</html>
